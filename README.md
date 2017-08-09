@@ -52,7 +52,7 @@ make
 sudo make install
 这样OpenCV就可以使用了。
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-开发说明：
+lnux QT开发说明：
 使用QT作为开发环境：
 1.在qt下打开.pro文件工程文件，点击配置，修改构建目录到 工程所在文件夹/obj/debug
 2.修改pro文件设置opencv3头文件和库文件路径,即修改
@@ -63,15 +63,12 @@ LIBS += -L$$"/usr/local/lib/"
 3.开发编译使用
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-使用说明:
-客户端和服务器端需在同一局域网下,即连接同一路由器,或在同一主机下测试,对于不同的摄像头需设置帧参数和每帧图片传输数据包数.
-修改参数:
+工程使用说明:
+客户端和服务器端需在同一局域网下,即连接同一路由器,或在同一主机下测试,设置每帧图片传输数据分包数量通过修改宏定义
+(同时修改客户端和服务器端):
 #define SEND_PKG_NUM_PER_PICTURE 4
-#define PIC_WIDRH 640
-#define PIC_HIGHT 480
-
-设置使用的摄像头
+linux 下终端中输入ls /dev | grep video 有结果输出说明可以识别摄像头设备
+如果有多个摄像头，设置使用的摄像头
 client.cpp:VideoCapture cap(0);// open camera //第0个相机设备
 客户端：
 1.切换到clientPrj目录
@@ -115,3 +112,8 @@ recvCnt:0
 recvCnt:800
 
 使用QT版:qtcreator 中打开工程编译执行,设置端口号,点击open开始接收.
+linux：文件夹serverUseQt
+windows7:文件夹serverUseQtWin7
+windiws下按照教程搭建qt+opencv环境，推荐教程“图解Win7下搭建OpenCV+Qt开发环境”
+链接：https://jingyan.baidu.com/article/cbf0e500aed91d2eaa2893e7.html
+
