@@ -1,0 +1,17 @@
+使用说明:
+客户端和服务器端需在同一局域网下,即连接同一路由器,或在同一主机下测试,对于不同的摄像头
+1.切换到clientPrj目录
+2.make clean
+3.make
+4. ./client -h 查看命令格式
+5.输入命令开启客户端,
+
+命令示例:
+./client
+you hadn't input server ip,u and server port,use default!
+default: server ip:192.168.199.229 server port:5136
+send buf size:131072
+Client- Opened socket seccessfully! (正常打开socket)
+server ip:192.168.199.229 server port:5136 socket id:10
+open cam success! (表示识别了摄像头)
+sendCnt:0clock:38872 time_s:59 cnt:0
