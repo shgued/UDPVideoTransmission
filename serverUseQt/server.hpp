@@ -54,6 +54,8 @@ private:
     #define PKG_MAX_LENGTH 60012
     char pkgData[PKG_MAX_LENGTH];
 
+    const unsigned int PACKET_HEAD_LENGTH = 6;
+
     int pkgCnt;
     QByteArray pkgDataGram;
     int key,cnt;

@@ -27,7 +27,6 @@ LIBS += "D:/Program Files/openCV3/lib/libopencv_highgui320.dll.a"
 LIBS += "D:/Program Files/openCV3/lib/libopencv_videoio320.dll.a"
 LIBS += "D:/Program Files/openCV3/lib/libopencv_imgcodecs320.dll.a"
 
-
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = server

@@ -52,7 +52,7 @@
         <item>
          <widget class="QLabel" name="label_2">
           <property name="text">
-           <string>servor port:</string>
+           <string>server port:</string>
           </property>
          </widget>
         </item>

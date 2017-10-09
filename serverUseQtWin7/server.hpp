@@ -12,7 +12,6 @@
 #include <cstring>
 #include <iostream>
 #include <unistd.h> //read & write g++
-#include <vector>
 
 #include <QUdpSocket>
 #include <QWidget>
@@ -49,6 +48,8 @@ private:
 
     #define PKG_MAX_LENGTH 60012
     char pkgData[PKG_MAX_LENGTH];
+
+    const unsigned int PACKET_HEAD_LENGTH = 6;
 
     int pkgCnt;
     QByteArray pkgDataGram;
