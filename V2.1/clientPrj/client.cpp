@@ -1,11 +1,11 @@
 //============================================================================
 // Name        : client.cpp
 // Author      : shgued
-// Version     : 2.0
+// Version     : 2.1
 // Copyright   : open source
 // Description : OpenCV experimentation in C++, transform video with UDP
 // !! 标记重点关注
-// udp加入包排序和丢包重发控制(只对当前正在接收和上一张图片丢失的包发送重发请求)
+// 修正线程函数中recvfrom返回-1的bug
 //============================================================================
 
 #include "client.hpp"
@@ -307,7 +307,7 @@ VideoTSClient vc(&sendMutex);
 
 //接收服务器端命令和重发包请求，重发数据包 静态函数
 void * threadFun(void *sockfd){
-    socklen_t len;
+    socklen_t len = sizeof(struct sockaddr);//不赋值（结构体大小），recvfrom可能返回-1，在ubuntu下不发生错误，开发板上出错了
     struct sockaddr addr;
     int cnt,num;
     static int t = 10;
@@ -318,6 +318,8 @@ void * threadFun(void *sockfd){
             cnt = recvfrom(udpSockfd, (void*)&dat,  \
                           1600, 0, &addr,&len);
             //cout << "cnt:" << cnt << " udpSockfd:" <<  udpSockfd << endl;
+            //获取错误信息
+            if(cnt == -1) cout << "recvfrom error:" << strerror(errno) <<endl;
         }
         if(cnt>4 && dat[0]==0x78 && dat[1]==0x56 && dat[2]==0x34 && dat[3]==0x12){
             if(dat[4] == CAR_CTL_CMD_ID && cnt == 7){//车控命令长度
